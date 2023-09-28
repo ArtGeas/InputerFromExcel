@@ -29,9 +29,6 @@ for index, row in df.iterrows():
     driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelPhone')]").send_keys(row['Phone Number'])
     driver.find_element(By.XPATH, "//*[contains(@class,'btn uiColorButton')]").click()
 
-time.sleep(5)
-
-
 # driver.close()
 # driver.quit()
 
