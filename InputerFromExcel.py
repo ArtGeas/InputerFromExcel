@@ -21,7 +21,7 @@ driver.find_element(By.XPATH, "//*[contains(@class,'waves-effect col s12 m12 l12
 for index, row in df.iterrows():
 
     driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelFirstName')]").send_keys(row['First Name'])
-    driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelLastName')]").send_keys(row['Last Name'])
+    driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelLastName')]").send_keys(row['Last Name ']) # файле в имени этого столбика пробел в конце 
     driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelCompanyName')]").send_keys(row['Company Name'])
     driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelRole')]").send_keys(row['Role in Company'])
     driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelAddress')]").send_keys(row['Address'])
@@ -29,6 +29,8 @@ for index, row in df.iterrows():
     driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelPhone')]").send_keys(row['Phone Number'])
     driver.find_element(By.XPATH, "//*[contains(@class,'btn uiColorButton')]").click()
 
+
+time.sleep(5)
 # driver.close()
 # driver.quit()
 
