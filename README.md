@@ -18,3 +18,6 @@ sudo apt install --fix-broken
 ```
 
 3. Запускаем InputerFromExcel.py
+
+Готово!
+<img width="960" alt="Screenshot_1" src="https://github.com/ArtGeas/InputerFromExcel/assets/116754574/11797adf-85cc-4bba-b1e1-392ef8cc2e3c">
