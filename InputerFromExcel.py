@@ -6,35 +6,30 @@ import pandas as pd
 import time
 
 
-# парсим excel файл
-df = pd.read_excel('challenge.xlsx', sheet_name='Sheet1')
+# читаем excel файл
+df = pd.read_excel('challenge.xlsx', sheet_name='Sheet1')    
 
-index = []
-for i in range(len(df)):
-    index.append(f'Row_{i+1}')
+# вставляем данные в форму 
+url = "https://rpachallenge.com/"
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
-df.index = index
-final = df.loc['Row_1']
-print(final[1])
+driver.maximize_window()
+driver.get(url)
 
-# # вставляем данные в форму
-# url = "https://rpachallenge.com/"
-# driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+driver.find_element(By.XPATH, "//*[contains(@class,'waves-effect col s12 m12 l12 btn-large uiColorButton')]").click()
 
+for index, row in df.iterrows():
 
-# driver.maximize_window()
-# driver.get(url)
-# time.sleep(5)
+    driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelFirstName')]").send_keys(row['First Name'])
+    driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelLastName')]").send_keys(row['Last Name'])
+    driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelCompanyName')]").send_keys(row['Company Name'])
+    driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelRole')]").send_keys(row['Role in Company'])
+    driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelAddress')]").send_keys(row['Address'])
+    driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelEmail')]").send_keys(row['Email'])
+    driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelPhone')]").send_keys(row['Phone Number'])
+    driver.find_element(By.XPATH, "//*[contains(@class,'btn uiColorButton')]").click()
 
-# driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelFirstName')]").send_keys('kuku')
-# driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelLastName')]").send_keys('kuku')
-# driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelCompanyName')]").send_keys('kuku')
-# driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelRole')]").send_keys('kuku')
-# driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelAddress')]").send_keys('kuku')
-# driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelEmail')]").send_keys('kuku')
-# driver.find_element(By.XPATH, "//*[contains(@ng-reflect-name,'labelPhone')]").send_keys('kuku')
-
-# time.sleep(5)
+time.sleep(5)
 
 
 # driver.close()
